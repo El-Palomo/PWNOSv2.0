@@ -208,17 +208,21 @@ http://10.10.10.100:80/blog/stats.php (Status: 200) [Size: 5694]
 | Archivo identificado | Información obtenida |
 | ------------- | ------------- |
 | / | Aplicación en la carpeta raiz |
-| /blog/ | Aplicación web identificada  |
-| Contenido de la celda  | Contenido de la celda  |
-| Contenido de la celda  | Contenido de la celda  |
-| Contenido de la celda  | Contenido de la celda  |
-| Contenido de la celda  | Contenido de la celda  |
-| Contenido de la celda  | Contenido de la celda  |
+| /blog/ | Aplicación web identificada, parece un blog |
+| /info.php  | PHPINFO, carpeta raiz /var/www/   |
+| /blog/config/  | carpeta que contiene un archivo password.txt con hash  |
+| /blog/content/  | Contenido de la aplicación  |
+| /blog/images/  | imagenes de la aplicación  |
 
 
+<img src="https://github.com/El-Palomo/PWNOSv2.0/blob/main/pwnos4.jpg" width=80% />
 
+- Llama la atención el password identificado en formato HASH. Vamos a identificar que algoritmo utilizaron para crearlo.
 
+<img src="https://github.com/El-Palomo/PWNOSv2.0/blob/main/pwnos5.jpg" width=80% />
 
-
-
+- Le ejecuté un HASHCAT. Sin suerte!
+```
+hashcat -m 500 -a 0 -o cracked.txt md5.txt /usr/share/wordlists/fasttrack.txt -O
+```
 
